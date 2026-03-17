@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="myDiv">
+        Tá
+    </div>
+
+    <script>
+        var myDiv = document.getElementById("myDiv");
+        myDiv.style.color = "white";
+        //corte
+        myDiv.style.width = "50%";
+        myDiv.style.padding = "5%";
+        myDiv.style.marginLeft = "20%";
+        myDiv.style.marginTop = "17%";
+        myDiv.style.backgroundColor = "gray";
+        myDiv.style.textAlign = "center";
+        myDiv.innerHTML += "<strong>Fortinho eim!</strong>";
+        myDiv.style.fontFamily = "Comic Sans MS";
+        myDiv.style.fontSize = "40px";
+    </script>
+    <hr>
+    <input type="text" placeholder="Nome do produto" id="txtNome">
+    <button onclick="adicionar()"> Adicionar </button>
+    <h1>Lista de Produtos</h1>
+    <div id="divProdutos"></div>
+
+    <script>
+        function adicionar(){
+            var divProdutos = document.getElementById("divProdutos");
+            var nome = document.getElementById("txtNome").value;
+            if( nome != "" ){
+                divProdutos.innerHTML += nome + "<br>"
+            }
+        }
+    </script>
+
+</body>
+</html>
