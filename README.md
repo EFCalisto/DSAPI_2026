@@ -1,0 +1,1 @@
+Este repositório reúne os conteúdos, exemplos práticos e exercícios desenvolvidos durante a disciplina de Desenvolvimento de Serviços e APIs. O foco principal é a criação de aplicações backend, abordando conceitos como arquitetura de APIs, comunicação cliente-servidor, padrões REST, manipulação de dados e integração com bancos de dados.
