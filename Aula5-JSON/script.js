@@ -32,7 +32,7 @@ function lerProdutos(){
 
     req.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            var produtos = JSON.parse(this.responseText);
+            var objJSON = JSON.parse(this.responseText);
             var produtos = objJSON.produtos;
             var txt = "";
             if(produtos.lenght ==0 ){
@@ -43,12 +43,14 @@ function lerProdutos(){
                 txt +=    "    <th> Código </th>";
                 txt +=    "    <th> Nome </th>";
                 txt +=    "    <th> Preço </th>";
+                txt +=    "    <th> Excluir </th>";
                 txt +=    "</th>";
                 produtos.forEach(prod =>{
                     txt += "<tr>";
                     txt += "    <td>" + prod.id + "</td>";
                     txt += "    <td>" + prod.nome + "</td>";
                     txt += "    <td>" + prod.preco + "</td>";
+                    txt += "    <td><button onclick='deletar(" + prod.id + ")'> X </button></td>";
                     txt += "</tr>";
                 })
             }
@@ -56,5 +58,22 @@ function lerProdutos(){
         }
     }
     req.open("GET", "servidor.php?buscar", true);
+    req.send();
+}
+
+function deletar( idProd ){
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+        if(this.readyState == 4){
+            var objJSON = JSON.parse(this.responseText );
+            if( objJSON.resposta ){
+                alert("Produto excluido com sucesso");
+                lerProdutos();
+            }
+                
+        }
+
+    };
+    req.open("GET", "servidor.php?excluir&idProduto=" + idProd, true);
     req.send();
 }
