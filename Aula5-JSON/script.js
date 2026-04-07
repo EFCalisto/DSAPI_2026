@@ -35,7 +35,7 @@ function lerProdutos(){
             var objJSON = JSON.parse(this.responseText);
             var produtos = objJSON.produtos;
             var txt = "";
-            if(produtos.lenght ==0 ){
+            if(produtos.length ==0 ){
                 txt = "<tr><th>Nenhum produto cadastrado!</th></tr>"
             }else{
 
@@ -76,4 +76,34 @@ function deletar( idProd ){
     };
     req.open("GET", "servidor.php?excluir&idProduto=" + idProd, true);
     req.send();
+}
+
+function add( idProd ){
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var objJSON = JSON.parse(this.responseText );
+            if( objJSON.resposta ){
+                if(objJSON.id){
+                    alert( objJSON.resposta + "\nID:" + objJSON.id );
+                    lerProdutos();
+                }else
+                    alert(objJSON.resposta);   
+                
+            }
+                
+        }
+
+    };
+    var nome = document.getElementById("txtNome").value;
+    var preco = document.getElementById("txtPreco").value;
+
+    if (nome != ""){
+        document.getElementById("txtNome").value =""
+        document.getElementById("txtPreco").value =""
+
+        req.open("POST", "servidor.php?inserir", true);
+        req.setRequestHeader("Content-type" , "application/x-ww-form-urlencoded");
+        req.send("name=" + nome + "&price" + preco);
+    }
 }
