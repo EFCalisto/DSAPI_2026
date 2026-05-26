@@ -22,3 +22,41 @@ const conn = knex({
 api.get("/" , (req, res, next) => {
     res.json({resposta : 'Seja bem-vindo(a) á nossa API'})
 })
+
+api.get("/product" , (req, res, next) => {
+    conn("produto")
+    .leftJoin("categoria" , "produto.codCategoria", "=", "categoria.id")
+    .select("produto.*", "categoria.nome AS cat")
+    .then(dados => res.json( dados ))
+    .catch( next )
+})
+
+api.get("/product/:idProd" , (req, res, next) => {
+    const id = req.params.idProd
+    conn("produto")
+    .leftJoin("categoria" , "produto.codCategoria", "=", "categoria.id")
+    .select("produto.*", "categoria.nome AS cat")
+    .where("produto.id", id )
+    .first()
+    .then(dados => res.json( dados ))
+    .catch( next )
+})
+
+api.get( "/category", (req, res, next) => {
+    conn("categoria")
+    .then( dados => res.json( dados ) )
+    .catch( next )
+})
+
+api.get("/category/:idCat", (req, res, next) => {
+    const id = req.params.idCat
+    conn("categoria")
+    .where("categoria.id", id)
+    .first()
+    .then(dados => res.json( dados ))
+    .catch( next )
+})
+
+api.listen( PORT , ()=>{
+    console.log( `Servidor rodando em: http://${HOSTNAME}:${PORT}` )
+})
