@@ -1,17 +1,19 @@
 {
-  "name": "api",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Eduarda Fischer Calisto",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "express": "^5.2.1",
     "http-errors": "^2.0.1",
     "knex": "^3.2.10",
-    "mysql": "^2.18.1"
-  }
+    "mysql2": "^3.22.4"
+  },
+  "name": "atividade1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
