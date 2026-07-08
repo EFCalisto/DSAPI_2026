@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Estudos</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <h2>Agenda</h2>
+
+        <button onclick="mostrar('disciplinas')">
+            Disciplinas
+        </button>
+
+        <button onclick="mostrar('metas')">
+            Metas
+        </button>
+
+        <button onclick="mostrar('entregas')">
+            Entregas
+        </button>
+
+        <button class="logout" onclick="logout()">
+            Sair
+        </button>
+
+    </aside>
+
+    <main class="conteudo">
+
+        <header>
+
+            <h1>Dashboard</h1>
+
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+                <h2 id="totalDisciplinas">0</h2>
+                <p>Disciplinas</p>
+            </div>
+
+            <div class="card">
+                <h2 id="totalMetas">0</h2>
+                <p>Metas</p>
+            </div>
+
+            <div class="card">
+                <h2 id="totalEntregas">0</h2>
+                <p>Entregas</p>
+            </div>
+
+        </section>
+
+        <section id="conteudo"></section>
+
+    </main>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
